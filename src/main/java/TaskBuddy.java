@@ -25,6 +25,23 @@ public class TaskBuddy {
                         System.out.println(indent + (i + 1) + "." + tasks.get(i));
                     }
 
+                // Delete a task
+                } else if (command.equals("delete")) {
+                    try {
+                        if (inputParts.length < 2 || inputParts[1].isBlank()) {
+                            throw new TaskBuddyException("Please provide a valid task number.");
+                        }
+                        int taskNumber = Integer.parseInt(inputParts[1]) - 1;
+                        Task removedTask = tasks.remove(taskNumber);
+                        System.out.println(indent + "Noted. I've removed this task:");
+                        System.out.println(indent + "  " + removedTask);
+                        System.out.println(indent + "Now you have " + tasks.size() + " tasks in the list.");
+                    } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                        System.out.println(indent + "Invalid task number. Please try again.");
+                    } catch (TaskBuddyException e) {
+                        System.out.println(indent + e.getMessage());
+                    }
+
                 // Mark this task as completed
                 } else if (command.equals("mark")) {
                     try {
