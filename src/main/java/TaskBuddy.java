@@ -8,7 +8,7 @@ public class TaskBuddy {
     public static void main(String[] args) {
         String indent = "   ";
 
-        // Load tasks from file
+        // Load tasks from text file
         ArrayList<Task> tasks = loadTasks(indent);
 
         System.out.println("Hello! I'm TaskBuddy");
