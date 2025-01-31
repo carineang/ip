@@ -24,7 +24,7 @@ public class Event extends Task {
     /**
      * Parses a string into a LocalDateTime object using a specific format.
      *
-     * @param input A string representing the date and time in the format "yyyy-MM-dd HHmm".
+     * @param input A string representing the date and time in the format
      * @return A LocalDateTime object representing the parsed date and time.
      */
     private LocalDateTime parseDateTime(String input) {
