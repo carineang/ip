@@ -199,14 +199,14 @@ public class TaskBuddy {
 
     private static Task parseTaskFromString(String line) {
         boolean isDone = line.contains("[1]"); // Completed task status
-        if (line.startsWith("[T]")) {
+        if (line.startsWith("[T]")) {           // To-do
             String description = line.substring(7);
             Todo task = new Todo(description);
             if (isDone) {
                 task.markAsDone();
             }
             return task;
-        } else if (line.startsWith("[D]")) {
+        } else if (line.startsWith("[D]")) {    // Deadline
             int byIndex = line.indexOf("(by:");
             if (byIndex == -1) {
                 return null;
@@ -218,7 +218,7 @@ public class TaskBuddy {
                 task.markAsDone();
             }
             return task;
-        } else if (line.startsWith("[E]")) {
+        } else if (line.startsWith("[E]")) {    // Event
             int fromIndex = line.indexOf("(from:");
             int toIndex = line.indexOf("to:");
             if (fromIndex == -1 || toIndex == -1) {
