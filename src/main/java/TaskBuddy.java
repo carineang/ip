@@ -207,11 +207,11 @@ public class TaskBuddy {
             }
             return task;
         } else if (line.startsWith("[D]")) {
-            int byIndex = line.lastIndexOf("(by:");
+            int byIndex = line.indexOf("(by:");
             if (byIndex == -1) {
                 return null;
             }
-            String description = line.substring(6, byIndex).trim();
+            String description = line.substring(7, byIndex).trim();
             String by = line.substring(byIndex + 5, line.length() - 1).trim();
             Deadline task = new Deadline(description, by);
             if (isDone) {
@@ -221,6 +221,9 @@ public class TaskBuddy {
         } else if (line.startsWith("[E]")) {
             int fromIndex = line.indexOf("(from:");
             int toIndex = line.indexOf("to:");
+            if (fromIndex == -1 || toIndex == -1) {
+                return null;
+            }
             String description = line.substring(7, fromIndex).trim();
             String from = line.substring(fromIndex + 6, toIndex).trim();
             String to = line.substring(toIndex + 3, line.length() - 1).trim();
