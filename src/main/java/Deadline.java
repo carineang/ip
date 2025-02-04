@@ -36,7 +36,18 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        return "[D]" + super.toString() + " (by: " + deadline.format(outputFormatter) + ")";
+        DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+        return "[D]" + super.toString() + " (by: " + deadline.format(displayFormatter) + ")";
+    }
+
+    /**
+     * Returns a string representation of the deadline task formatted for saving to a file.
+     *
+     * @return A string representation of the deadline task in a format suitable for saving to a file.
+     */
+    public String toFileString() {
+        DateTimeFormatter fileFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        return "[D]" + super.toString() + " (by: " + deadline.format(fileFormatter) + ")";
     }
 }
+

@@ -1,7 +1,10 @@
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -181,10 +184,16 @@ public class TaskBuddy {
         }
         String description = deadlineParts[0];
         String deadline = deadlineParts[1];
-        Task newTask = new Deadline(description, deadline);
-        tasks.add(newTask);
-        addTaskMessage(newTask, tasks.size(), indent);
-        saveTasks(tasks, indent);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+            LocalDateTime.parse(deadline, formatter);
+            Task newTask = new Deadline(description, deadline);
+            tasks.add(newTask);
+            addTaskMessage(newTask, tasks.size(), indent);
+            saveTasks(tasks, indent);
+        } catch (DateTimeParseException e) {
+            throw new TaskBuddyException("Invalid date format for deadline. Please use the format: yyyy-MM-dd HHmm");
+        }
     }
 
     /**
@@ -211,10 +220,17 @@ public class TaskBuddy {
         }
         String from = timeParts[0];
         String to = timeParts[1];
-        Task newTask = new Event(description, from, to);
-        tasks.add(newTask);
-        addTaskMessage(newTask, tasks.size(), indent);
-        saveTasks(tasks, indent);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+            LocalDateTime.parse(from, formatter);
+            LocalDateTime.parse(to, formatter);
+            Task newTask = new Event(description, from, to);
+            tasks.add(newTask);
+            addTaskMessage(newTask, tasks.size(), indent);
+            saveTasks(tasks, indent);
+        } catch (DateTimeParseException e) {
+            throw new TaskBuddyException("Invalid date-time format for event. Please use yyyy-MM-dd HHmm for both /from and /to times.");
+        }
     }
 
     /**
@@ -237,11 +253,10 @@ public class TaskBuddy {
      * @param indent Indentation used for formatting the output.
      */
     private static void saveTasks(ArrayList<Task> tasks, String indent) {
-        //File file = new File("taskbuddy.txt");
         File file = new File("ip/data/taskbuddy.txt");
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
-                writer.write(task.toString() + "\n");
+                writer.write(task.toFileString() + "\n");
             }
             System.out.println(indent + "Tasks have been saved to taskbuddy.txt.");
         } catch (IOException e) {
@@ -258,7 +273,6 @@ public class TaskBuddy {
      */
     private static ArrayList<Task> loadTasks(String indent) {
         ArrayList<Task> tasks = new ArrayList<>();
-        //File file = new File("taskbuddy.txt");
         File file = new File("ip/data/taskbuddy.txt");
         if (!file.exists()) {
             return tasks;
@@ -313,7 +327,7 @@ public class TaskBuddy {
             }
             String description = line.substring(7, fromIndex).trim();
             String from = line.substring(fromIndex + 6, toIndex).trim();
-            String to = line.substring(toIndex + 3, line.length() - 1).trim();
+            String to = line.substring(toIndex + 4, line.length() - 1).trim();
             Event task = new Event(description, from, to);
             if (isDone) {
                 task.markAsDone();

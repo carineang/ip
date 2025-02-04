@@ -39,7 +39,18 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
         return "[E]" + super.toString() + " (from: " + from.format(outputFormatter) + " to: " + to.format(outputFormatter) + ")";
+    }
+
+    /**
+     * Returns a string representation of the event task formatted for saving to a file.
+     *
+     * @return A string representation of the event task in a format suitable for saving to a file.
+     */
+    @Override
+    public String toFileString() {
+        DateTimeFormatter fileFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        return "[E]" + super.toString() + " (from: " + from.format(fileFormatter) + " to: " + to.format(fileFormatter) + ")";
     }
 }

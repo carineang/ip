@@ -50,4 +50,11 @@ public abstract class Task {
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
+
+    /**
+     * Returns a string representation of the task formatted for saving to a file.
+     *
+     * @return A string representation of the task in a format suitable for saving to a file.
+     */
+    public abstract String toFileString();
 }
