@@ -1,3 +1,5 @@
+package taskbuddy;
+import taskbuddy.task.Task;
 import java.util.Scanner;
 
 public class Ui {

@@ -1,16 +1,23 @@
-public class UnmarkCommand extends Command {
+package taskbuddy.command;
+import taskbuddy.TaskList;
+import taskbuddy.Storage;
+import taskbuddy.Ui;
+import taskbuddy.task.Task;
+
+
+public class DeleteCommand extends Command {
     private Task task;
     private int taskIndex;
 
-    public UnmarkCommand(Task task, int taskIndex) {
+    public DeleteCommand(Task task, int taskIndex) {
         this.task = task;
         this.taskIndex = taskIndex;
     }
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
-        taskList.unmarkTask(taskIndex);
-        ui.printUnmarkTaskMessage(task);
+        taskList.removeTask(taskIndex);
+        ui.printDeleteTaskMessage(task);
         storage.saveTasks(taskList);
     }
 
@@ -19,3 +26,4 @@ public class UnmarkCommand extends Command {
         return false;
     }
 }
+

@@ -1,3 +1,5 @@
+package taskbuddy.task;
+
 /**
  * An abstract Task class meant for different task types and their completion status.
  */

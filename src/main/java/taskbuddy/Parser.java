@@ -1,3 +1,9 @@
+package taskbuddy;
+import taskbuddy.command.*;
+import taskbuddy.task.Deadline;
+import taskbuddy.task.Event;
+import taskbuddy.task.Todo;
+import taskbuddy.task.Task;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

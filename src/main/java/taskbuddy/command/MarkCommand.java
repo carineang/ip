@@ -1,3 +1,9 @@
+package taskbuddy.command;
+import taskbuddy.TaskList;
+import taskbuddy.Storage;
+import taskbuddy.Ui;
+import taskbuddy.task.Task;
+
 public class MarkCommand extends Command {
     private Task task;
     private int taskIndex;
