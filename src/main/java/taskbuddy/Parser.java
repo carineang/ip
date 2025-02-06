@@ -18,7 +18,7 @@ public class Parser {
     public static String readCommand() {
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
-        // Split the input into 2 parts
+        // Split the input into 2 different parts
         inputParts = userInput.split(" ", 2);
         command = inputParts[0];
         return command;
@@ -76,7 +76,6 @@ public class Parser {
                         throw new TaskBuddyException("Please provide a valid todo description.");
                     }
                     Task todo = new Todo(inputParts[1]);
-
                     return new AddCommand(todo);
 
                 // Deadline tasks
@@ -135,6 +134,7 @@ public class Parser {
             }
         } catch (TaskBuddyException e) {
             System.out.println(indent + e.getMessage());
+            // No Operation command
             return new NoOpCommand();
         }
     }
