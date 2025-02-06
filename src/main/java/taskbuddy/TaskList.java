@@ -40,5 +40,9 @@ public class TaskList {
     public int getTaskListSize() {
         return tasks.size();
     }
+
+    public boolean contains(Task task) {
+        return tasks.contains(task);
+    }
 }
 

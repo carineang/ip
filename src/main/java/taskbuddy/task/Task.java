@@ -59,4 +59,8 @@ public abstract class Task {
      * @return A string representation of the task in a format suitable for saving to a file.
      */
     public abstract String toFileString();
+
+    public String getDescription() {
+        return description;
+    }
 }

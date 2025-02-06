@@ -21,6 +21,10 @@ public class DeleteCommand extends Command {
         storage.saveTasks(taskList);
     }
 
+    public void execute(TaskList taskList) {
+        taskList.removeTask(taskIndex);
+    }
+
     @Override
     public boolean isExit() {
         return false;
