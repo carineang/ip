@@ -1,5 +1,7 @@
 package taskbuddy;
 import taskbuddy.task.Task;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -50,4 +52,10 @@ public class Ui {
         System.out.println(indent + "Bye. Hope to see you again soon!");
     }
 
+    public void printMatchingTasks(ArrayList<Task> matchingTaskList) {
+        System.out.println(indent + "Here are the matching tasks in your list:");
+        for (int i = 0; i < matchingTaskList.size(); i++) {
+            System.out.println(indent + (i + 1) + "." + matchingTaskList.get(i));
+        }
+    }
 }

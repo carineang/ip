@@ -124,6 +124,13 @@ public class Parser {
                         throw new TaskBuddyException("Invalid date-time format for event. Please use yyyy-MM-dd HHmm for both /from and /to times.");
                     }
 
+                case "find":
+                    if (inputParts.length < 2 || inputParts[1].isBlank()) {
+                        throw new TaskBuddyException("Please provide a valid keyword.");
+                    }
+                    //Task todo = new Todo(inputParts[1]);
+                    return new FindCommand(inputParts[1]);
+
                 // Bye command
                 case "bye":
                     return new ExitCommand();
