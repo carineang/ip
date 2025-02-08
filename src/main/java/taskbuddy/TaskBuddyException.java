@@ -1,8 +1,7 @@
 package taskbuddy;
 
 /**
- * TaskBuddy exception for handling errors specific to the TaskBuddy application, thrown when an invalid operation
- * or input occurs within the application.
+ * TaskBuddy exception for handling errors specific to the TaskBuddy application.
  */
 public class TaskBuddyException extends Exception {
     /**

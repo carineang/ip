@@ -4,6 +4,7 @@ package taskbuddy.task;
  * Represents a to-do task with a description.
  */
 public class Todo extends Task {
+
     /**
      * Constructs a To-do object with a description.
      *

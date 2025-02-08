@@ -1,19 +1,33 @@
 package taskbuddy;
-import taskbuddy.task.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import taskbuddy.task.*;
 
+/**
+ * Handles saving and loading tasks to and from a file.
+ */
 public class Storage {
     private String filePath;
     private final String indent = "   ";
 
+    /**
+     * Constructs a Storage object with the specified file path.
+     *
+     * @param filePath The path to the file where tasks will be saved or loaded.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Saves the current list of tasks to the file specified by the file path.
+     *
+     * @param taskList The list of tasks to be saved.
+     */
     public void saveTasks(TaskList taskList) {
         ArrayList<Task> tasks = taskList.getTaskList();
         File file = new File(filePath);
@@ -27,6 +41,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the file specified by the file path.
+     *
+     * @return An ArrayList of tasks loaded from the file.
+     */
     public ArrayList<Task> loadTasks() {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -48,6 +67,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Parses a task from a string representation read from the file.
+     *
+     * @param line The string representation of a task.
+     * @return The corresponding Task object.
+     */
     private Task parseTaskFromString(String line) {
         boolean isDone = line.contains("[1]"); // Completed task status
         if (line.startsWith("[T]")) {           // To-do
@@ -86,5 +111,4 @@ public class Storage {
         }
         return null;
     }
-
 }

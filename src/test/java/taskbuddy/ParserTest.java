@@ -1,12 +1,18 @@
 package taskbuddy;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import taskbuddy.command.*;
 import taskbuddy.task.*;
 
+/**
+ * Test class containing unit tests for parsing commands in Parser class.
+ */
 public class ParserTest {
 
-    // Test for list command
+    /**
+     * Test for the "list" command.
+     */
     @Test
     public void testListCommand() {
         TaskList tasklist = new TaskList();
@@ -15,6 +21,9 @@ public class ParserTest {
         assertTrue(command instanceof ListCommand);
     }
 
+    /**
+     * Test for the "delete" command.
+     */
     @Test
     public void testDeleteCommand() {
             TaskList taskList = new TaskList();

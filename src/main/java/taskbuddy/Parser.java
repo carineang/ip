@@ -1,4 +1,5 @@
 package taskbuddy;
+
 import taskbuddy.command.*;
 import taskbuddy.task.Deadline;
 import taskbuddy.task.Event;
@@ -9,12 +10,20 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Parses user input into commands that can be executed by the TaskBuddy application.
+ */
 public class Parser {
     private static Ui ui = new Ui();
     private static String indent = "   ";
     private static String[] inputParts;
     private static String command;
 
+    /**
+     * Reads a command entered by the user.
+     *
+     * @return The command keyword.
+     */
     public static String readCommand() {
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
@@ -24,6 +33,14 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Parses the user input into a Command object that can be executed.
+     *
+     * @param input The command keyword entered by the user.
+     * @param taskList The current list of tasks in the system.
+     * @return A Command object that represents the desired action to be executed.
+     * @throws TaskBuddyException if the input is invalid or improperly formatted.
+     */
     public static Command parseCommand(String input, TaskList taskList) {
         try {
             switch (input) {
@@ -124,11 +141,11 @@ public class Parser {
                         throw new TaskBuddyException("Invalid date-time format for event. Please use yyyy-MM-dd HHmm for both /from and /to times.");
                     }
 
+                // find keyword command
                 case "find":
                     if (inputParts.length < 2 || inputParts[1].isBlank()) {
                         throw new TaskBuddyException("Please provide a valid keyword.");
                     }
-                    //Task todo = new Todo(inputParts[1]);
                     return new FindCommand(inputParts[1]);
 
                 // Bye command

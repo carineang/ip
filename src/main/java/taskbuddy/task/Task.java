@@ -8,7 +8,7 @@ public abstract class Task {
     protected boolean isDone;
 
     /**
-     * Constructs a Task object with a given description. Initially, the task is marked as not done.
+     * Constructs a Task object with a given description.
      *
      * @param description The description of the task.
      */
@@ -19,7 +19,6 @@ public abstract class Task {
 
     /**
      * Returns the status icon of the task based on its completion status.
-     * If the task is completed, it returns "1", otherwise "0".
      *
      * @return A string representing the completion status icon of the task.
      */
@@ -29,7 +28,6 @@ public abstract class Task {
 
     /**
      * Marks the task as completed.
-     * After calling this method, the task will be considered completed.
      */
     public void markAsDone() {
         this.isDone = true;
@@ -37,7 +35,6 @@ public abstract class Task {
 
     /**
      * Marks the task as not completed.
-     * After calling this method, the task will be considered not completed.
      */
     public void markAsNotDone() {
         this.isDone = false;
@@ -46,7 +43,7 @@ public abstract class Task {
     /**
      * Returns a string representation of the task.
      *
-     * @return A string representation of the task, in the format "[status] description".
+     * @return A string representation of the task.
      */
     @Override
     public String toString() {
@@ -60,6 +57,11 @@ public abstract class Task {
      */
     public abstract String toFileString();
 
+    /**
+     * Returns the description of the task.
+     *
+     * @return The description of the task.
+     */
     public String getDescription() {
         return description;
     }

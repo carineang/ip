@@ -1,4 +1,5 @@
 package taskbuddy;
+
 import taskbuddy.command.*;
 
 /**
@@ -9,12 +10,20 @@ public class TaskBuddy {
     private TaskList taskList;
     private Ui ui;
 
+    /**
+     * Constructs a TaskBuddy object with the specified file path for storing task data.
+     *
+     * @param filePath The path of the file where tasks will be saved and loaded from.
+     */
     public TaskBuddy(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         taskList = new TaskList(storage.loadTasks());
     }
 
+    /**
+     * Starts and runs the TaskBuddy chatbot.
+     */
     public void run() {
         ui.printWelcomeMessage();
         boolean isExit = false;
@@ -26,6 +35,12 @@ public class TaskBuddy {
         }
     }
 
+    /**
+     * The entry point for the TaskBuddy application. It initializes the TaskBuddy object with a
+     * specified file path and runs the chatbot.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         new TaskBuddy("ip/data/taskbuddy.txt").run();
     }
