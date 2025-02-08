@@ -12,7 +12,7 @@ import taskbuddy.task.*;
  */
 public class Storage {
     private String filePath;
-    private final String indent = "   ";
+    private final String INDENT = "   ";
 
     /**
      * Constructs a Storage object with the specified file path.
@@ -35,9 +35,9 @@ public class Storage {
             for (Task task : tasks) {
                 writer.write(task.toFileString() + "\n");
             }
-            System.out.println(indent + "Tasks have been saved to taskbuddy.txt.");
+            System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(indent + "Error saving tasks to file. Please try again.");
+            System.out.println(INDENT + "Error saving tasks to file. Please try again.");
         }
     }
 
@@ -60,9 +60,9 @@ public class Storage {
                     tasks.add(task);
                 }
             }
-            System.out.println(indent + "Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
+            System.out.println(INDENT + "Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(indent + "Error loading tasks. Starting with an empty list.");
+            System.out.println(INDENT + "Error loading tasks. Starting with an empty list.");
         }
         return tasks;
     }

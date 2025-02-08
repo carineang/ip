@@ -1,7 +1,7 @@
 package taskbuddy;
 
-import taskbuddy.task.Task;
 import java.util.ArrayList;
+import taskbuddy.task.Task;
 
 /**
  * Represents a list of tasks in the TaskBuddy application.

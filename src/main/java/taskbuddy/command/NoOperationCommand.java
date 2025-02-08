@@ -7,7 +7,7 @@ import taskbuddy.Ui;
 /**
  * Represents a command that performs no operation. just a placeholder.
  */
-public class NoOpCommand extends Command {
+public class NoOperationCommand extends Command {
 
     /**
      * Executes no operation command.
