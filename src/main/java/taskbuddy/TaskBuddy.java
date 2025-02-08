@@ -36,8 +36,7 @@ public class TaskBuddy {
     }
 
     /**
-     * The entry point for the TaskBuddy application. It initializes the TaskBuddy object with a
-     * specified file path and runs the chatbot.
+     * The entry point for the TaskBuddy application.
      *
      * @param args Command-line arguments.
      */
