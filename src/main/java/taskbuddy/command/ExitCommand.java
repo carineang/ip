@@ -1,5 +1,10 @@
 package taskbuddy.command;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import taskbuddy.TaskList;
 import taskbuddy.Storage;
 import taskbuddy.Ui;
@@ -19,6 +24,15 @@ public class ExitCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         storage.saveTasks(taskList);
+        // Use PauseTransition to delay exit in a JavaFX-safe way
+//        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+//        delay.setOnFinished(event -> Platform.exit());
+//        delay.play();
+        new Timer().schedule(new TimerTask() {
+            public void run() {
+                Platform.exit();
+            }
+        }, 1000);
         return ui.printGoodbye();
     }
 
