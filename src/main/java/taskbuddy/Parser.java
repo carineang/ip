@@ -41,9 +41,10 @@ public class Parser {
      * @return A Command object that represents the desired action to be executed.
      * @throws TaskBuddyException if the input is invalid or improperly formatted.
      */
-    public static Command parseCommand(String input, TaskList taskList) {
-        try {
-            switch (input) {
+    public static Command parseCommand(String input, TaskList taskList) throws TaskBuddyException{
+        String[] inputParts = input.split(" ", 2);
+        String command = inputParts[0];
+        switch (command) {
             // List all tasks
             case "list":
                 return new ListCommand();
@@ -61,7 +62,7 @@ public class Parser {
                     throw new TaskBuddyException("Invalid task number. Please try again.");
                 }
 
-            // Mark this task as completed
+                // Mark this task as completed
             case "mark":
                 if (inputParts.length < 2 || inputParts[1].isBlank()) {
                     throw new TaskBuddyException("Please provide a valid task number.");
@@ -74,7 +75,7 @@ public class Parser {
                     throw new TaskBuddyException("Invalid task number. Please try again.");
                 }
 
-            // Mark this task as not completed
+                // Mark this task as not completed
             case "unmark":
                 if (inputParts.length < 2 || inputParts[1].isBlank()) {
                     throw new TaskBuddyException("Please provide a valid task number.");
@@ -87,7 +88,7 @@ public class Parser {
                     throw new TaskBuddyException("Invalid task number. Please try again.");
                 }
 
-            // To-Do tasks
+                // To-Do tasks
             case "todo":
                 if (inputParts.length < 2 || inputParts[1].isBlank()) {
                     throw new TaskBuddyException("Please provide a valid todo description.");
@@ -115,7 +116,7 @@ public class Parser {
                     throw new TaskBuddyException("Invalid date format for deadline. Please use the format: yyyy-MM-dd HHmm");
                 }
 
-            // Event tasks
+                // Event tasks
             case "event":
                 if (inputParts.length < 2 || inputParts[1].isBlank()) {
                     throw new TaskBuddyException("Please provide a valid event description.");
@@ -141,10 +142,10 @@ public class Parser {
                     throw new TaskBuddyException("Invalid date-time format for event. Please use yyyy-MM-dd HHmm for both /from and /to times.");
                 }
 
-            // find keyword command
+                // find keyword command
             case "find":
                 if (inputParts.length < 2 || inputParts[1].isBlank()) {
-                    throw new TaskBuddyException("Please provide a valid keyword.");
+                    throw new TaskBuddyException(ui.printFindErrorMessage());
                 }
                 return new FindCommand(inputParts[1]);
 
@@ -154,12 +155,8 @@ public class Parser {
 
             // Invalid commands
             default:
-                throw new TaskBuddyException("Invalid command. Please try again.");
-            }
-        } catch (TaskBuddyException e) {
-            System.out.println(INDENT + e.getMessage());
-            // No Operation command
-            return new NoOperationCommand();
+                return new InvalidCommand();
+
         }
     }
 }

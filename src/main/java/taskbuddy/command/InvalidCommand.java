@@ -7,7 +7,7 @@ import taskbuddy.Ui;
 /**
  * Represents a command that performs no operation. just a placeholder.
  */
-public class NoOperationCommand extends Command {
+public class InvalidCommand extends Command {
 
     /**
      * Executes no operation command.
@@ -17,8 +17,8 @@ public class NoOperationCommand extends Command {
      * @param storage The storage system.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        // Does nothing, no operations
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return ui.printInvalidCommand();
     }
 
     /**

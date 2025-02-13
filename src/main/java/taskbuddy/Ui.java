@@ -21,9 +21,10 @@ public class Ui {
     /**
      * Prints the welcome message when the program starts.
      */
-    public void printWelcomeMessage() {
-        System.out.println(INDENT + "Hello! I'm TaskBuddy");
-        System.out.println(INDENT + "What can I do for you?");
+    public String printWelcomeMessage() {
+        String response1 = INDENT + "Hello! I'm TaskBuddy";
+        String response2 = INDENT + "What can I do for you?";
+        return response1 +"\n" + response2;
     }
 
     /**
@@ -31,11 +32,22 @@ public class Ui {
      *
      * @param tasks The TaskList containing the tasks to display.
      */
-    public void printTaskList(TaskList tasks) {
-        System.out.println(INDENT + "Here are the tasks in your list:");
-        for (int i = 0; i < tasks.getTaskListSize(); i++) {
-            System.out.println(INDENT + (i + 1) + "." + tasks.getTaskList().get(i));
+    public String printTaskList(TaskList tasks) {
+        if (tasks.getTaskListSize() == 0) {
+            return INDENT + "Your task list is empty.";
         }
+
+        StringBuilder list = new StringBuilder();
+        list.append(INDENT).append("Here are the tasks in your list:\n");
+
+        for (int i = 0; i < tasks.getTaskListSize(); i++) {
+            list.append(INDENT)
+                    .append(i + 1)
+                    .append(". ")
+                    .append(tasks.getTaskList().get(i))
+                    .append("\n");
+        }
+        return list.toString().trim();
     }
 
     /**
@@ -43,9 +55,10 @@ public class Ui {
      *
      * @param task The task that was added to the list.
      */
-    public void printAddTaskMessage(Task task) {
-        System.out.println(INDENT + "Got it. I've added this task:");
-        System.out.println(INDENT + "  " + task);
+    public String printAddTaskMessage(Task task) {
+        String response1 = INDENT + "Got it. I've added this task:";
+        String response2 = INDENT + "  " + task;
+        return response1 +"\n" + response2;
     }
 
     /**
@@ -53,9 +66,10 @@ public class Ui {
      *
      * @param task The task that was removed from the list.
      */
-    public void printDeleteTaskMessage(Task task) {
-        System.out.println(INDENT + "Noted. I've removed this task:");
-        System.out.println(INDENT + "  " + task);
+    public String printDeleteTaskMessage(Task task) {
+        String response1 = INDENT + "Noted. I've removed this task:";
+        String response2 = INDENT + "  " + task;
+        return response1 +"\n" + response2;
     }
 
     /**
@@ -63,9 +77,10 @@ public class Ui {
      *
      * @param task The task that was marked as completed.
      */
-    public void printMarkTaskMessage(Task task) {
-        System.out.println(INDENT + "Nice! I've marked this task as done:");
-        System.out.println(INDENT + "  " + task);
+    public String printMarkTaskMessage(Task task) {
+        String response1 = INDENT + "Nice! I've marked this task as done:";
+        String response2 = INDENT + "  " + task;
+        return response1 +"\n" + response2;
     }
 
     /**
@@ -73,16 +88,18 @@ public class Ui {
      *
      * @param task The task that was unmarked, not done.
      */
-    public void printUnmarkTaskMessage(Task task) {
-        System.out.println(INDENT + "OK, I've marked this task as not done yet:");
-        System.out.println(INDENT + "  " + task);
+    public String printUnmarkTaskMessage(Task task) {
+        String response1 = INDENT + "OK, I've marked this task as not done yet:";
+        String response2 = INDENT + "  " + task;
+        return response1 +"\n" + response2;
     }
 
     /**
      * Prints a goodbye message when the user exits the program.
      */
-    public void printGoodbye() {
-        System.out.println(INDENT + "Bye. Hope to see you again soon!");
+    public String printGoodbye() {
+        String response = INDENT + "Bye. Hope to see you again soon!";
+        return response;
     }
 
     /**
@@ -90,10 +107,28 @@ public class Ui {
      *
      * @param matchingTaskList The list of tasks that match the user's search keyword.
      */
-    public void printMatchingTasks(ArrayList<Task> matchingTaskList) {
-        System.out.println(INDENT + "Here are the matching tasks in your list:");
-        for (int i = 0; i < matchingTaskList.size(); i++) {
-            System.out.println(INDENT + (i + 1) + "." + matchingTaskList.get(i));
+    public String printMatchingTasks(ArrayList<Task> matchingTaskList) {
+        if (matchingTaskList.isEmpty()) {
+            return INDENT + "There are no matching tasks in your list.";
         }
+
+        StringBuilder result = new StringBuilder(INDENT + "Here are the matching tasks in your list:\n");
+        for (int i = 0; i < matchingTaskList.size(); i++) {
+            result.append(INDENT)
+                    .append(i + 1)
+                    .append(". ")
+                    .append(matchingTaskList.get(i))
+                    .append("\n");
+        }
+
+        return result.toString().trim(); // Remove trailing newline
+    }
+
+    public String printInvalidCommand() {
+        return "Invalid command. Please try again.";
+    }
+
+    public String printFindErrorMessage() {
+        return "Please provide a valid keyword.";
     }
 }

@@ -32,10 +32,11 @@ public class UnmarkCommand extends Command {
      * @param storage The storage system used to save the updated task list.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         taskList.unmarkTask(taskIndex);
-        ui.printUnmarkTaskMessage(task);
         storage.saveTasks(taskList);
+        String response = ui.printUnmarkTaskMessage(task);
+        return response;
     }
 
     /**

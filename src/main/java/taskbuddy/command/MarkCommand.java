@@ -32,10 +32,11 @@ public class MarkCommand extends Command {
      * @param storage The storage system used to save the updated task list.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         taskList.markTask(taskIndex);
-        ui.printMarkTaskMessage(task);
         storage.saveTasks(taskList);
+        String response = ui.printMarkTaskMessage(task);
+        return response;
     }
 
     /**

@@ -21,26 +21,13 @@ public class TaskBuddy {
         taskList = new TaskList(storage.loadTasks());
     }
 
-    /**
-     * Starts and runs the TaskBuddy chatbot.
-     */
-    public void run() {
-        ui.printWelcomeMessage();
-        boolean isExit = false;
-        while (!isExit) {
-            String fullCommand = Parser.readCommand();
-            Command c = Parser.parseCommand(fullCommand, taskList);
-            c.execute(taskList, ui, storage);
-            isExit = c.isExit();
-        }
-    }
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parseCommand(input, taskList);
+            return c.execute(taskList, ui, storage);
+        } catch (TaskBuddyException e) {
+            return "Oops!!! " + e.getMessage();
 
-    /**
-     * The entry point for the TaskBuddy application.
-     *
-     * @param args Command-line arguments.
-     */
-    public static void main(String[] args) {
-        new TaskBuddy("ip/data/taskbuddy.txt").run();
+        }
     }
 }
