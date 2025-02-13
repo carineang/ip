@@ -40,15 +40,6 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Executes the DeleteCommand, which involves removing the task from the task list.
-     *
-     * @param taskList The task list from which the task will be removed.
-     */
-    public void execute(TaskList taskList) {
-        taskList.removeTask(taskIndex);
-    }
-
-    /**
      * Returns whether this command is an "exit" command.
      *
      * @return false, as this command does not trigger program exit.
