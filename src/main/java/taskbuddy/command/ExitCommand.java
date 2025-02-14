@@ -13,11 +13,14 @@ import taskbuddy.Ui;
 public class ExitCommand extends Command {
 
     /**
-     * Executes the exit command by saving the task list to storage and printing a goodbye message.
+     * Executes the exit command by saving the current task list to storage,
+     * displaying a goodbye message to the user, and scheduling the application
+     * to close after a short delay.
      *
-     * @param taskList The list of tasks to be saved before the application exits.
-     * @param ui The user interface used to display messages to the user.
-     * @param storage The storage system used to save the task list.
+     * @param taskList The list of tasks to be saved before exiting.
+     * @param ui The user interface for displaying messages.
+     * @param storage The storage system responsible for saving the task list.
+     * @return A goodbye message indicating that the application is closing.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

@@ -5,17 +5,18 @@ import taskbuddy.Storage;
 import taskbuddy.Ui;
 
 /**
- * Abstract class that represents a command in the TaskBuddy application.
+ * An abstract class representing a command in the TaskBuddy application.
  */
 public abstract class Command {
 
     /**
-     * Executes the command, performing the desired action on the task list,
-     * interacting with the UI, and managing storage as needed.
+     * Executes the command, performing the necessary operations on the task list,
+     * updating the user interface, and managing storage as needed.
      *
-     * @param tasks The task list on which the command will operate.
-     * @param ui The user interface to communicate results to the user.
-     * @param storage The storage system used to save or load tasks.
+     * @param tasks The task list on which the command operates.
+     * @param ui The user interface for displaying messages to the user.
+     * @param storage The storage system used for saving or retrieving tasks.
+     * @return A message reflecting the result of the command execution.
      */
     public abstract String execute(TaskList tasks, Ui ui, Storage storage);
 

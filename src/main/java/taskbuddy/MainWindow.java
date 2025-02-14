@@ -22,16 +22,20 @@ public class MainWindow extends AnchorPane {
     private Button sendButton;
 
     private TaskBuddy taskbuddybot;
-
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/penguin.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/robot.png"));
 
+    /**
+     * Initializes the MainWindow controller by binding the scroll pane's vertical value to the dialog container's height.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the TaskBuddy instance */
+    /**
+     *  Injects the TaskBuddy instance.
+     */
     public void setTaskBuddy(TaskBuddy d) {
         taskbuddybot = d;
     }

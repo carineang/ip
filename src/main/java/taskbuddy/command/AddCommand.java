@@ -21,12 +21,13 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Executes the AddCommand, which involves adding the task to the task list,
-     * printing a confirmation message to the user, and saving the updated task list.
+     * Executes the command by adding the task to the task list, displaying a confirmation
+     * message to the user, and saving the updated task list to storage.
      *
-     * @param taskList The task list to which the task will be added.
-     * @param ui The user interface that handles printing messages to the user.
-     * @param storage The storage system that handles saving the task list.
+     * @param taskList The task list to which the task is added.
+     * @param ui The user interface for displaying messages.
+     * @param storage The storage system for saving the updated task list.
+     * @return A confirmation message indicating the task has been added.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
@@ -47,9 +48,9 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Gets the task associated with this command.
+     * Retrieves the task associated with this command.
      *
-     * @return The task to be added to the task list.
+     * @return The task to be added.
      */
     public Task getTask() {
         return task;

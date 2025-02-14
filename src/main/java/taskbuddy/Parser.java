@@ -35,10 +35,12 @@ public class Parser {
 
     /**
      * Parses the user input into a Command object that can be executed.
+     * This method identifies the command type and returns a corresponding Command object.
+     * If the input is invalid or improperly formatted, a TaskBuddyException is thrown.
      *
-     * @param input The command keyword entered by the user.
+     * @param input The full user input string containing the command and its parameters.
      * @param taskList The current list of tasks in the system.
-     * @return A Command object that represents the desired action to be executed.
+     * @return A Command object representing the desired action to be executed.
      * @throws TaskBuddyException if the input is invalid or improperly formatted.
      */
     public static Command parseCommand(String input, TaskList taskList) throws TaskBuddyException{

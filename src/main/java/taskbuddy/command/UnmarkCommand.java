@@ -25,11 +25,12 @@ public class UnmarkCommand extends Command {
 
     /**
      * Executes the unmark command by unmarking the specified task as incomplete,
-     * printing a confirmation message to the user, and saving the updated task list.
+     * printing a confirmation message to the user, and saving the updated task list to storage.
      *
-     * @param taskList The list of tasks that contains the task to be unmarked.
-     * @param ui The user interface used to display the confirmation message.
-     * @param storage The storage system used to save the updated task list.
+     * @param taskList The list of tasks that contains the task to be unmarked as incomplete.
+     * @param ui The user interface used to display the confirmation message to the user.
+     * @param storage The storage system used to save the updated task list after the task is unmarked.
+     * @return A string containing the confirmation message indicating the task has been unmarked as incomplete.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

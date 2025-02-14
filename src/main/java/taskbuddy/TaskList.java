@@ -101,6 +101,7 @@ public class TaskList {
 
     /**
      * Finds and returns all tasks whose descriptions contain the specified keyword.
+     * Searches through all task descriptions and returns those that contain the given keyword.
      *
      * @param keyword The keyword to search for in task descriptions.
      * @return A list of tasks that contain the specified keyword in their description.

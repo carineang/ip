@@ -27,6 +27,7 @@ public class Storage {
      * Saves the current list of tasks to the file specified by the file path.
      *
      * @param taskList The list of tasks to be saved.
+     * @throws IOException If an error occurs while writing to the file.
      */
     public void saveTasks(TaskList taskList) {
         ArrayList<Task> tasks = taskList.getTaskList();
@@ -45,6 +46,7 @@ public class Storage {
      * Loads tasks from the file specified by the file path.
      *
      * @return An ArrayList of tasks loaded from the file.
+     * @throws IOException If an error occurs while reading from the file.
      */
     public ArrayList<Task> loadTasks() {
         ArrayList<Task> tasks = new ArrayList<>();

@@ -24,19 +24,19 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Executes the DeleteCommand, which involves removing the task from the task list,
-     * printing a confirmation message to the user, and saving the updated task list.
+     * Executes the command by removing the task from the task list, displaying
+     * a confirmation message to the user, and saving the updated task list to storage.
      *
-     * @param taskList The task list from which the task will be removed.
-     * @param ui The user interface that handles printing messages to the user.
-     * @param storage The storage system that handles saving the task list.
+     * @param taskList The task list from which the task is removed.
+     * @param ui The user interface for displaying messages.
+     * @param storage The storage system for saving the updated task list.
+     * @return A confirmation message indicating the task has been deleted.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         taskList.removeTask(taskIndex);
         storage.saveTasks(taskList);
         return ui.printDeleteTaskMessage(task);
-
     }
 
     /**

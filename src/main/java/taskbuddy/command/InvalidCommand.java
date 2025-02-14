@@ -10,11 +10,12 @@ import taskbuddy.Ui;
 public class InvalidCommand extends Command {
 
     /**
-     * Executes no operation command.
+     * Executes the invalid command.
      *
-     * @param taskList The list of tasks.
-     * @param ui The user interface.
+     * @param taskList The task list.
+     * @param ui The user interface for displaying messages.
      * @param storage The storage system.
+     * @return A message indicating that the command is invalid.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

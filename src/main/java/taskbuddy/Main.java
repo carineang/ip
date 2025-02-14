@@ -8,12 +8,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for TaskBuddy using FXML.
+ * A JavaFX GUI application for TaskBuddy, which is a task management tool.
  */
 public class Main extends Application {
 
     private TaskBuddy taskbuddybot = new TaskBuddy("data/taskbuddy.txt");
 
+    /**
+     * Initializes and displays the main window of the TaskBuddy application.
+     *
+     * @param stage The primary stage for this application, onto which the scene will be set.
+     */
     @Override
     public void start(Stage stage) {
         try {
