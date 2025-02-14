@@ -22,6 +22,7 @@ public class TaskList {
      * @param tasks The list of tasks to initialize the TaskList with.
      */
     public TaskList(ArrayList<Task> tasks) {
+        assert tasks != null : "Your task list should not be empty.";
         this.tasks = tasks;
     }
 

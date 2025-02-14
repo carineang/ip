@@ -20,6 +20,7 @@ public class Storage {
      * @param filePath The path to the file where tasks will be saved or loaded.
      */
     public Storage(String filePath) {
+        assert filePath != null && !filePath.isEmpty() : "File path cannot be null or empty";
         this.filePath = filePath;
     }
 
@@ -34,6 +35,7 @@ public class Storage {
         File file = new File(filePath);
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
+                assert task != null : "Task should not be null";
                 writer.write(task.toFileString() + "\n");
             }
             System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
@@ -57,6 +59,7 @@ public class Storage {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
+                assert line != null && !line.trim().isEmpty() : "Invalid line read from file";
                 Task task = parseTaskFromString(line);
                 if (task != null) {
                     tasks.add(task);

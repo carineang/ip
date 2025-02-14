@@ -45,6 +45,7 @@ public class Parser {
      */
     public static Command parseCommand(String input, TaskList taskList) throws TaskBuddyException{
         String[] inputParts = input.split(" ", 2);
+        assert inputParts.length > 0 : "There should be input.";
         String command = inputParts[0];
         switch (command) {
             // List all tasks
