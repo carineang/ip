@@ -35,7 +35,7 @@ public class Storage {
         File file = new File(filePath);
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
-                assert task != null : "Task should not be null";
+                assert task != null : "Task should not be empty.";
                 writer.write(task.toFileString() + "\n");
             }
             System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
@@ -59,7 +59,7 @@ public class Storage {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                assert line != null && !line.trim().isEmpty() : "Invalid line read from file";
+                assert line != null && !line.trim().isEmpty() : "Invalid line read from file.";
                 Task task = parseTaskFromString(line);
                 if (task != null) {
                     tasks.add(task);
