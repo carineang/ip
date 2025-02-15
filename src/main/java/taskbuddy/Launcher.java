@@ -3,7 +3,7 @@ package taskbuddy;
 import javafx.application.Application;
 
 /**
- * A launcher class to launch TaskBuddy application..
+ * A launcher class to launch TaskBuddy application.
  */
 public class Launcher {
 
