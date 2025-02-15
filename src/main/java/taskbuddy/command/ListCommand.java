@@ -1,7 +1,7 @@
 package taskbuddy.command;
 
-import taskbuddy.TaskList;
 import taskbuddy.Storage;
+import taskbuddy.TaskList;
 import taskbuddy.Ui;
 
 /**
@@ -15,7 +15,7 @@ public class ListCommand extends Command {
      *
      * @param taskList The list of tasks to be displayed to the user.
      * @param ui The user interface that handles displaying the task list.
-     * @param storage The storage system, which is not used in this command but included for compatibility with the Command class.
+     * @param storage The storage system.
      * @return A string containing the formatted task list to be displayed to the user.
      */
     @Override

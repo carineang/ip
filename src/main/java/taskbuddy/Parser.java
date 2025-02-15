@@ -4,11 +4,21 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import taskbuddy.command.*;
+
+import taskbuddy.command.AddCommand;
+import taskbuddy.command.Command;
+import taskbuddy.command.DeleteCommand;
+import taskbuddy.command.ExitCommand;
+import taskbuddy.command.FindCommand;
+import taskbuddy.command.InvalidCommand;
+import taskbuddy.command.ListCommand;
+import taskbuddy.command.MarkCommand;
+import taskbuddy.command.UnmarkCommand;
+import taskbuddy.command.ViewCommand;
 import taskbuddy.task.Deadline;
 import taskbuddy.task.Event;
-import taskbuddy.task.Todo;
 import taskbuddy.task.Task;
+import taskbuddy.task.Todo;
 
 /**
  * Parses user input into commands that can be executed by the TaskBuddy application.
@@ -30,28 +40,28 @@ public class Parser {
         String command = inputParts[0];
 
         switch (command) {
-            case "list":
-                return new ListCommand();
-            case "delete":
-                return parseDeleteCommand(inputParts,taskList);
-            case "mark":
-                return parseMarkCommand(inputParts,taskList);
-            case "unmark":
-                return parseUnmarkCommand(inputParts,taskList);
-            case "todo":
-                return parseTodoCommand(inputParts);
-            case "deadline":
-                return parseDeadlineCommand(inputParts);
-            case "event":
-                return parseEventCommand(inputParts);
-            case "find":
-                return parseFindCommand(inputParts);
-            case "view":
-                return parseViewCommand(inputParts);
-            case "bye":
-                return new ExitCommand();
-            default:
-                return new InvalidCommand();
+        case "list":
+            return new ListCommand();
+        case "delete":
+            return parseDeleteCommand(inputParts, taskList);
+        case "mark":
+            return parseMarkCommand(inputParts, taskList);
+        case "unmark":
+            return parseUnmarkCommand(inputParts, taskList);
+        case "todo":
+            return parseTodoCommand(inputParts);
+        case "deadline":
+            return parseDeadlineCommand(inputParts);
+        case "event":
+            return parseEventCommand(inputParts);
+        case "find":
+            return parseFindCommand(inputParts);
+        case "view":
+            return parseViewCommand(inputParts);
+        case "bye":
+            return new ExitCommand();
+        default:
+            return new InvalidCommand();
         }
     }
 
@@ -189,7 +199,8 @@ public class Parser {
             Task eventTask = new Event(eventDescription, from, to);
             return new AddCommand(eventTask);
         } catch (DateTimeParseException e) {
-            throw new TaskBuddyException("Invalid date-time format for event. Please use yyyy-MM-dd HHmm for both /from and /to. ");
+            throw new TaskBuddyException("Invalid date-time format for event. "
+                    + "Please use yyyy-MM-dd HHmm for both /from and /to.");
         }
     }
 

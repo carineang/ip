@@ -2,9 +2,10 @@ package taskbuddy.command;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javafx.application.Platform;
-import taskbuddy.TaskList;
 import taskbuddy.Storage;
+import taskbuddy.TaskList;
 import taskbuddy.Ui;
 
 /**
