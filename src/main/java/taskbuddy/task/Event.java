@@ -45,6 +45,17 @@ public class Event extends Task {
     }
 
     /**
+     * Checks if the deadline task matches a specific target date.
+     *
+     * @param targetDate A LocalDate object representing the target date to compare with.
+     * @return True if the deadline task's date matches the target date.
+     */
+    @Override
+    public boolean matchesDate(LocalDate targetDate) {
+        return this.getStartDate().equals(targetDate);
+    }
+
+    /**
      * Returns a string representation of the event task.
      *
      * @return A string representation of the event task.

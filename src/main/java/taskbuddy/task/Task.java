@@ -1,5 +1,7 @@
 package taskbuddy.task;
 
+import java.time.LocalDate;
+
 /**
  * An abstract Task class meant for different task types and their completion status.
  */
@@ -65,4 +67,11 @@ public abstract class Task {
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Checks if the task matches a specific target date.
+     *
+     * @param targetDate A LocalDate object representing the target date to compare with.
+     */
+    public abstract boolean matchesDate(LocalDate targetDate);
 }

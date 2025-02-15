@@ -34,9 +34,8 @@ public class ViewCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate targetDate;
-        targetDate = LocalDate.parse(date, formatter);
-        ArrayList<Task> matchingTasks = taskList.findMatchingTaskDate(taskList, targetDate);
+        LocalDate targetDate = LocalDate.parse(date, formatter);
+        ArrayList<Task> matchingTasks = taskList.findMatchingTaskDate(targetDate);
         return ui.printMatchingTasksDate(matchingTasks);
     }
 

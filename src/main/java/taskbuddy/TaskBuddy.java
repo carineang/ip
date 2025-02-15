@@ -35,8 +35,7 @@ public class TaskBuddy {
             Command c = Parser.parseCommand(input, taskList);
             return c.execute(taskList, ui, storage);
         } catch (TaskBuddyException e) {
-            return "Oops!!! " + e.getMessage();
-
+            return "Beep!!! " + e.getMessage();
         }
     }
 }

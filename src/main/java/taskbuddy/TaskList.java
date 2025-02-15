@@ -2,8 +2,6 @@ package taskbuddy;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import taskbuddy.task.Deadline;
-import taskbuddy.task.Event;
 import taskbuddy.task.Task;
 
 /**
@@ -123,23 +121,14 @@ public class TaskList {
     /**
      * Finds and returns all tasks that match the specified date.
      *
-     * @param taskList The list of tasks to search.
      * @param targetDate The date to match tasks.
      * @return A list of tasks that match the specified date.
      */
-    public ArrayList<Task> findMatchingTaskDate(TaskList taskList, LocalDate targetDate) {
+    public ArrayList<Task> findMatchingTaskDate(LocalDate targetDate) {
         ArrayList<Task> matchingTasks = new ArrayList<>();
-        for (Task task : taskList.getTaskList()) {
-            if (task instanceof Deadline) {
-                LocalDate deadlineDate = ((Deadline) task).getLocalDate();
-                if (deadlineDate.equals(targetDate)) {
-                    matchingTasks.add(task);
-                }
-            } else if (task instanceof Event) {
-                LocalDate eventDate = ((Event) task).getStartDate();
-                if (eventDate.equals(targetDate)) {
-                    matchingTasks.add(task);
-                }
+        for (Task task : tasks) {
+            if (task.matchesDate(targetDate)) {
+                matchingTasks.add(task);
             }
         }
         return matchingTasks;
