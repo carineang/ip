@@ -5,14 +5,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import taskbuddy.task.*;
+
+import taskbuddy.task.Deadline;
+import taskbuddy.task.Event;
+import taskbuddy.task.Task;
+import taskbuddy.task.Todo;
 
 /**
  * Handles saving and loading tasks to and from a file.
  */
 public class Storage {
     private String filePath;
-    private final String INDENT = "   ";
+    private final String indent = "   ";
 
     /**
      * Constructs a Storage object with the specified file path.
@@ -47,9 +51,9 @@ public class Storage {
                 assert task != null : "Task should not be null.";
                 writer.write(task.toFileString() + "\n");
             }
-            System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
+            System.out.println(indent + "Tasks have been saved to taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(INDENT + "Error saving tasks to file. Please try again.");
+            System.out.println(indent + "Error saving tasks to file. Please try again.");
         }
     }
 
@@ -74,9 +78,9 @@ public class Storage {
                     tasks.add(task);
                 }
             }
-            System.out.println(INDENT + "Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
+            System.out.println(indent + "Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(INDENT + "Error loading tasks. Starting with an empty list.");
+            System.out.println(indent + "Error loading tasks. Starting with an empty list.");
         }
         return tasks;
     }

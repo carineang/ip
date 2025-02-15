@@ -1,6 +1,6 @@
 package taskbuddy;
 
-import taskbuddy.command.*;
+import taskbuddy.command.Command;
 
 /**
  * TaskBuddy is a task management chatbot that allows users to interact with

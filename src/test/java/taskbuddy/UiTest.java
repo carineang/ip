@@ -1,10 +1,14 @@
 package taskbuddy;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import taskbuddy.task.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
+
+import taskbuddy.task.Task;
+import taskbuddy.task.Todo;
 
 /**
  * Test class containing unit tests for testing the methods in Ui class.

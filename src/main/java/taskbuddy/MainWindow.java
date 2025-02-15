@@ -26,7 +26,7 @@ public class MainWindow extends AnchorPane {
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/robot.png"));
 
     /**
-     * Initializes the MainWindow controller by binding the scroll pane's vertical value to the dialog container's height.
+     * Initializes the MainWindow controller by binding the scroll pane's vertical value to dialog container's height.
      */
     @FXML
     public void initialize() {

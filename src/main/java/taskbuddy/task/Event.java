@@ -63,7 +63,8 @@ public class Event extends Task {
     @Override
     public String toString() {
         DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy h:mma");
-        return "[E]" + super.toString() + " (from: " + from.format(displayFormatter) + " to: " + to.format(displayFormatter) + ")";
+        return "[E]" + super.toString() + " (from: " + from.format(displayFormatter) + " to: "
+                + to.format(displayFormatter) + ")";
     }
 
     /**
@@ -74,6 +75,7 @@ public class Event extends Task {
     @Override
     public String toFileString() {
         DateTimeFormatter fileFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        return "[E]" + super.toString() + " (from: " + from.format(fileFormatter) + " to: " + to.format(fileFormatter) + ")";
+        return "[E]" + super.toString() + " (from: " + from.format(fileFormatter) + " to: "
+                + to.format(fileFormatter) + ")";
     }
 }
