@@ -1,16 +1,16 @@
 package taskbuddy;
+
 import javafx.application.Application;
 
 /**
- * A launcher class to workaround classpath issues.
+ * A launcher class to launch TaskBuddy application..
  */
 public class Launcher {
 
     /**
-     * The main entry point for launching the TaskBuddy application.
-     * This method starts the JavaFX application by invoking the launch method on the Main class.
+     * Main entry point to launch the TaskBuddy application.
      *
-     * @param args Command-line arguments passed to the application.
+     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
         Application.launch(Main.class, args);
