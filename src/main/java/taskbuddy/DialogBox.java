@@ -67,13 +67,13 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Creates a DialogBox for Duke's response with the specified text and image.
+     * Creates a DialogBox for TaskBuddy's response with the specified text and image.
      *
      * @param text The text to display in the dialog box.
      * @param img The image representing Duke's face.
      * @return A DialogBox instance for Duke's response.
      */
-    public static DialogBox getDukeDialog(String text, Image img) {
+    public static DialogBox getTaskBuddyDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();
         return db;

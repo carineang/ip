@@ -20,25 +20,16 @@ public class Ui {
     }
 
     /**
-     * Prints the welcome message when the program starts.
-     */
-    public String printWelcomeMessage() {
-        String response1 = indent + "Hello! I'm TaskBuddy";
-        String response2 = indent + "What can I do for you?";
-        return response1 + "\n" + response2;
-    }
-
-    /**
      * Prints the list of tasks currently in the task list.
      *
      * @param tasks The TaskList containing the tasks to display.
      */
     public String printTaskList(TaskList tasks) {
         if (tasks.getTaskListSize() == 0) {
-            return indent + "Your task list is empty.";
+            return "Your task list is empty.";
         }
         StringBuilder list = new StringBuilder();
-        list.append(indent).append("Here are the tasks in your list:\n");
+        list.append("Here are the tasks in your list:\n");
         for (int i = 0; i < tasks.getTaskListSize(); i++) {
             list.append(indent)
                     .append(i + 1)
@@ -55,8 +46,8 @@ public class Ui {
      * @param task The task that was added to the list.
      */
     public String printAddTaskMessage(Task task) {
-        String response1 = indent + "Got it. I've added this task:";
-        String response2 = indent + "  " + task;
+        String response1 = "Got it. I've added this task:";
+        String response2 = indent + task;
         return response1 + "\n" + response2;
     }
 
@@ -66,8 +57,8 @@ public class Ui {
      * @param task The task that was removed from the list.
      */
     public String printDeleteTaskMessage(Task task) {
-        String response1 = indent + "Noted. I've removed this task:";
-        String response2 = indent + "  " + task;
+        String response1 = "Noted. I've removed this task:";
+        String response2 = indent + task;
         return response1 + "\n" + response2;
     }
 
@@ -77,8 +68,8 @@ public class Ui {
      * @param task The task that was marked as completed.
      */
     public String printMarkTaskMessage(Task task) {
-        String response1 = indent + "Nice! I've marked this task as done:";
-        String response2 = indent + "  " + task;
+        String response1 = "Nice! I've marked this task as done:";
+        String response2 = indent + task;
         return response1 + "\n" + response2;
     }
 
@@ -88,8 +79,8 @@ public class Ui {
      * @param task The task that was unmarked, not done.
      */
     public String printUnmarkTaskMessage(Task task) {
-        String response1 = indent + "OK, I've marked this task as not done yet:";
-        String response2 = indent + "  " + task;
+        String response1 = "OK, I've marked this task as not done yet:";
+        String response2 = indent + task;
         return response1 + "\n" + response2;
     }
 
@@ -97,7 +88,7 @@ public class Ui {
      * Prints a goodbye message when the user exits the program.
      */
     public String printGoodbye() {
-        String response = indent + "Bye. Hope to see you again soon!";
+        String response = "Bye. Hope to see you again soon!";
         return response;
     }
 
@@ -108,9 +99,9 @@ public class Ui {
      */
     public String printMatchingTasks(ArrayList<Task> matchingTaskList) {
         if (matchingTaskList.isEmpty()) {
-            return indent + "There are no matching tasks in your list.";
+            return "There are no matching tasks in your list.";
         }
-        StringBuilder result = new StringBuilder(indent + "Here are the matching tasks in your list:\n");
+        StringBuilder result = new StringBuilder("Here are the matching tasks in your list:\n");
         for (int i = 0; i < matchingTaskList.size(); i++) {
             result.append(indent)
                     .append(i + 1)
@@ -131,7 +122,7 @@ public class Ui {
         if (matchingTaskList.isEmpty()) {
             return "There are no task for this date.";
         }
-        StringBuilder result = new StringBuilder(indent + "Here are the tasks for this date:\n");
+        StringBuilder result = new StringBuilder("Here are the tasks for this date:\n");
         for (int i = 0; i < matchingTaskList.size(); i++) {
             result.append(indent)
                     .append(i + 1)

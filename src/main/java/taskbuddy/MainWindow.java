@@ -23,7 +23,7 @@ public class MainWindow extends AnchorPane {
 
     private TaskBuddy taskbuddybot;
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/penguin.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/robot.png"));
+    private Image taskBuddyImage = new Image(this.getClass().getResourceAsStream("/images/robot.png"));
 
     /**
      * Initializes the MainWindow controller by binding the scroll pane's vertical value to dialog container's height.
@@ -31,6 +31,8 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.getChildren().addAll(
+                DialogBox.getTaskBuddyDialog("Hello! I'm TaskBuddy!\nHow can I help you?", taskBuddyImage));
     }
 
     /**
@@ -50,7 +52,7 @@ public class MainWindow extends AnchorPane {
         String response = taskbuddybot.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getTaskBuddyDialog(response, taskBuddyImage)
         );
         userInput.clear();
     }

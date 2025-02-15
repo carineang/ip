@@ -51,9 +51,9 @@ public class Storage {
                 assert task != null : "Task should not be null.";
                 writer.write(task.toFileString() + "\n");
             }
-            System.out.println(indent + "Tasks have been saved to taskbuddy.txt.");
+            System.out.println("Tasks have been saved to taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(indent + "Error saving tasks to file. Please try again.");
+            System.out.println("Error saving tasks to file. Please try again.");
         }
     }
 
@@ -78,9 +78,9 @@ public class Storage {
                     tasks.add(task);
                 }
             }
-            System.out.println(indent + "Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
+            System.out.println("Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println(indent + "Error loading tasks. Starting with an empty list.");
+            System.out.println("Error loading tasks. Starting with an empty list.");
         }
         return tasks;
     }
