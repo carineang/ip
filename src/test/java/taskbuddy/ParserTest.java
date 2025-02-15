@@ -14,7 +14,7 @@ public class ParserTest {
      * Test for the "list" command.
      */
     @Test
-    public void testListCommand() {
+    public void testListCommand() throws TaskBuddyException {
         TaskList tasklist = new TaskList();
         String input = "list";
         Command command = Parser.parseCommand(input, tasklist);
@@ -25,7 +25,7 @@ public class ParserTest {
      * Test for the "delete" command.
      */
     @Test
-    public void testDeleteCommand() {
+    public void testDeleteCommand() throws TaskBuddyException {
             TaskList taskList = new TaskList();
             Task todoTask1 = new Todo("Finish Homework");
             Task todoTask2 = new Todo("Read Book");
