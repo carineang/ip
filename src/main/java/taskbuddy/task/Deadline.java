@@ -1,5 +1,6 @@
 package taskbuddy.task;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -29,6 +30,15 @@ public class Deadline extends Task {
     private LocalDateTime parseDateTime(String input) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
         return LocalDateTime.parse(input, formatter);
+    }
+
+    /**
+     * Returns the date of the deadline task.
+     *
+     * @return The date of the deadline task.
+     */
+    public LocalDate getLocalDate() {
+        return deadline.toLocalDate();
     }
 
     /**

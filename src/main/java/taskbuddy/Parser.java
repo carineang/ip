@@ -1,5 +1,6 @@
 package taskbuddy;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -45,6 +46,8 @@ public class Parser {
                 return parseEventCommand(inputParts);
             case "find":
                 return parseFindCommand(inputParts);
+            case "view":
+                return parseViewCommand(inputParts);
             case "bye":
                 return new ExitCommand();
             default:
@@ -202,5 +205,26 @@ public class Parser {
             throw new TaskBuddyException(ui.printFindErrorMessage());
         }
         return new FindCommand(inputParts[1]);
+    }
+
+    /**
+     * Parses the view command to show tasks for a specific date.
+     *
+     * @param inputParts The parts of the user input string.
+     * @return A ViewCommand to show tasks for the specified date.
+     * @throws TaskBuddyException if the date is missing or in an invalid format.
+     */
+    private static Command parseViewCommand(String[] inputParts) throws TaskBuddyException {
+        if (inputParts.length < 2 || inputParts[1].isBlank()) {
+            throw new TaskBuddyException("Please provide a date.");
+        }
+        String dateString = inputParts[1];
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate.parse(dateString, formatter);
+            return new ViewCommand(dateString);
+        } catch (DateTimeParseException e) {
+            throw new TaskBuddyException("Invalid date format. Please use yyyy-MM-dd.");
+        }
     }
 }

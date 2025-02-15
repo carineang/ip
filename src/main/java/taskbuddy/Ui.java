@@ -36,10 +36,8 @@ public class Ui {
         if (tasks.getTaskListSize() == 0) {
             return INDENT + "Your task list is empty.";
         }
-
         StringBuilder list = new StringBuilder();
         list.append(INDENT).append("Here are the tasks in your list:\n");
-
         for (int i = 0; i < tasks.getTaskListSize(); i++) {
             list.append(INDENT)
                     .append(i + 1)
@@ -111,7 +109,6 @@ public class Ui {
         if (matchingTaskList.isEmpty()) {
             return INDENT + "There are no matching tasks in your list.";
         }
-
         StringBuilder result = new StringBuilder(INDENT + "Here are the matching tasks in your list:\n");
         for (int i = 0; i < matchingTaskList.size(); i++) {
             result.append(INDENT)
@@ -120,14 +117,44 @@ public class Ui {
                     .append(matchingTaskList.get(i))
                     .append("\n");
         }
-
-        return result.toString().trim(); // Remove trailing newline
+        return result.toString().trim();
     }
 
+    /**
+     * Prints the list of tasks that match a given date.
+     *
+     * @param matchingTaskList The list of tasks that match the user's specified date.
+     * @return A string representation of the tasks for the given date.
+     */
+    public String printMatchingTasksDate(ArrayList<Task> matchingTaskList) {
+        if (matchingTaskList.isEmpty()) {
+            return "There are no task for this date.";
+        }
+        StringBuilder result = new StringBuilder(INDENT + "Here are the tasks for this date:\n");
+        for (int i = 0; i < matchingTaskList.size(); i++) {
+            result.append(INDENT)
+                    .append(i + 1)
+                    .append(". ")
+                    .append(matchingTaskList.get(i))
+                    .append("\n");
+        }
+        return result.toString().trim();
+    }
+
+    /**
+     * Prints a message indicating that the command entered was invalid.
+     *
+     * @return The error message to be printed.
+     */
     public String printInvalidCommand() {
         return "Invalid command. Please try again.";
     }
 
+    /**
+     * Prints a message indicating that the user provided an invalid keyword.
+     *
+     * @return The error message to be printed.
+     */
     public String printFindErrorMessage() {
         return "Please provide a valid keyword.";
     }

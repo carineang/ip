@@ -1,5 +1,6 @@
 package taskbuddy.task;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -32,6 +33,15 @@ public class Event extends Task {
     private LocalDateTime parseDateTime(String input) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
         return LocalDateTime.parse(input, formatter);
+    }
+
+    /**
+     * Returns the start date of the event task.
+     *
+     * @return The start date of the event task.
+     */
+    public LocalDate getStartDate() {
+        return from.toLocalDate();
     }
 
     /**
