@@ -35,7 +35,7 @@ public class Storage {
         File file = new File(filePath);
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
-                assert task != null : "Task should not be empty.";
+                assert task != null : "Task should not be empty....";
                 writer.write(task.toFileString() + "\n");
             }
             System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
