@@ -28,14 +28,23 @@ public class Storage {
      * Saves the current list of tasks to the file specified by the file path.
      *
      * @param taskList The list of tasks to be saved.
-     * @throws IOException If an error occurs while writing to the file.
      */
     public void saveTasks(TaskList taskList) {
         ArrayList<Task> tasks = taskList.getTaskList();
+        writeTasksToFile(tasks);
+    }
+
+    /**
+     * Writes the tasks to the file.
+     *
+     * @param tasks The list of tasks to be written.
+     * @throws IOException If an error occurs while writing to the file.
+     */
+    private void writeTasksToFile(ArrayList<Task> tasks) {
         File file = new File(filePath);
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
-                assert task != null : "Task should not be empty....";
+                assert task != null : "Task should not be null.";
                 writer.write(task.toFileString() + "\n");
             }
             System.out.println(INDENT + "Tasks have been saved to taskbuddy.txt.");
@@ -73,47 +82,79 @@ public class Storage {
     }
 
     /**
-     * Parses a task from a string representation read from the file.
+     * Parses a task from a string representation.
      *
      * @param line The string representation of a task.
      * @return The corresponding Task object.
      */
     private Task parseTaskFromString(String line) {
-        boolean isDone = line.contains("[1]"); // Completed task status
-        if (line.startsWith("[T]")) {           // To-do
-            String description = line.substring(7);
-            Todo task = new Todo(description);
-            if (isDone) {
-                task.markAsDone();
-            }
-            return task;
-        } else if (line.startsWith("[D]")) {    // Deadline
-            int byIndex = line.indexOf("(by:");
-            if (byIndex == -1) {
-                return null;
-            }
-            String description = line.substring(7, byIndex).trim();
-            String by = line.substring(byIndex + 5, line.length() - 1).trim();
-            Deadline task = new Deadline(description, by);
-            if (isDone) {
-                task.markAsDone();
-            }
-            return task;
-        } else if (line.startsWith("[E]")) {    // Event
-            int fromIndex = line.indexOf("(from:");
-            int toIndex = line.indexOf("to:");
-            if (fromIndex == -1 || toIndex == -1) {
-                return null;
-            }
-            String description = line.substring(7, fromIndex).trim();
-            String from = line.substring(fromIndex + 6, toIndex).trim();
-            String to = line.substring(toIndex + 4, line.length() - 1).trim();
-            Event task = new Event(description, from, to);
-            if (isDone) {
-                task.markAsDone();
-            }
-            return task;
+        if (line.startsWith("[T]")) {
+            return parseTodo(line);
+        } else if (line.startsWith("[D]")) {
+            return parseDeadline(line);
+        } else if (line.startsWith("[E]")) {
+            return parseEvent(line);
         }
         return null;
+    }
+
+    /**
+     * Parses a To-do task from a string.
+     *
+     * @param line The string representation of a To-do task.
+     * @return A To-do object.
+     */
+    private Todo parseTodo(String line) {
+        boolean isDone = line.contains("[1]");
+        String description = line.substring(7);
+        Todo task = new Todo(description);
+        if (isDone) {
+            task.markAsDone();
+        }
+        return task;
+    }
+
+    /**
+     * Parses a Deadline task from a string.
+     *
+     * @param line The string representation of a Deadline task.
+     * @return A Deadline object.
+     */
+    private Deadline parseDeadline(String line) {
+        boolean isDone = line.contains("[1]");
+        int byIndex = line.indexOf("(by:");
+        if (byIndex == -1) {
+            return null;
+        }
+        String description = line.substring(7, byIndex).trim();
+        String by = line.substring(byIndex + 5, line.length() - 1).trim();
+        Deadline task = new Deadline(description, by);
+        if (isDone) {
+            task.markAsDone();
+        }
+        return task;
+    }
+
+    /**
+     * Parses an Event task from a string.
+     *
+     * @param line The string representation of an Event task.
+     * @return An Event object.
+     */
+    private Event parseEvent(String line) {
+        boolean isDone = line.contains("[1]");
+        int fromIndex = line.indexOf("(from:");
+        int toIndex = line.indexOf("to:");
+        if (fromIndex == -1 || toIndex == -1) {
+            return null;
+        }
+        String description = line.substring(7, fromIndex).trim();
+        String from = line.substring(fromIndex + 6, toIndex).trim();
+        String to = line.substring(toIndex + 4, line.length() - 1).trim();
+        Event task = new Event(description, from, to);
+        if (isDone) {
+            task.markAsDone();
+        }
+        return task;
     }
 }
