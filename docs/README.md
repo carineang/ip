@@ -1,6 +1,6 @@
 # TaskBuddy User Guide 🤖
 
-// Product screenshot goes here
+![This is the product](Ui.png)
 
 ## Introduction
 Say _hello_ to TaskBuddy, your cheerful and friendly task management chatbot! 🌟 Whether you're tackling a mountain of tasks or just need a little help staying on top of things, TaskBuddy is here to keep you organized and smiling. Need to add a task? TaskBuddy is on it! ✅ Want to delete one that’s already done? No problem! 🗑️ You can even mark tasks as completed with a celebratory high-five or unmark them when life throws a curveball. 💫
