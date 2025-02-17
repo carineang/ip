@@ -28,16 +28,11 @@ public class Ui {
         if (tasks.getTaskListSize() == 0) {
             return "Your task list is empty.";
         }
-        StringBuilder list = new StringBuilder();
-        list.append("Here are the tasks in your list:\n");
+        String list = "Here are the tasks in your list:\n";
         for (int i = 0; i < tasks.getTaskListSize(); i++) {
-            list.append(indent)
-                    .append(i + 1)
-                    .append(". ")
-                    .append(tasks.getTaskList().get(i))
-                    .append("\n");
+            list += indent + (i + 1) + ". " + tasks.getTaskList().get(i) + "\n";
         }
-        return list.toString().trim();
+        return list.trim();
     }
 
     /**
@@ -101,15 +96,11 @@ public class Ui {
         if (matchingTaskList.isEmpty()) {
             return "There are no matching tasks in your list.";
         }
-        StringBuilder result = new StringBuilder("Here are the matching tasks in your list:\n");
+        String result = "Here are the matching tasks in your list:\n";
         for (int i = 0; i < matchingTaskList.size(); i++) {
-            result.append(indent)
-                    .append(i + 1)
-                    .append(". ")
-                    .append(matchingTaskList.get(i))
-                    .append("\n");
+            result += indent + (i + 1) + ". " + matchingTaskList.get(i) + "\n";
         }
-        return result.toString().trim();
+        return result.trim();
     }
 
     /**
@@ -122,15 +113,11 @@ public class Ui {
         if (matchingTaskList.isEmpty()) {
             return "There are no task for this date.";
         }
-        StringBuilder result = new StringBuilder("Here are the tasks for this date:\n");
+        String result = "Here are the tasks for this date:\n";
         for (int i = 0; i < matchingTaskList.size(); i++) {
-            result.append(indent)
-                    .append(i + 1)
-                    .append(". ")
-                    .append(matchingTaskList.get(i))
-                    .append("\n");
+            result += indent + (i + 1) + ". " + matchingTaskList.get(i) + "\n";
         }
-        return result.toString().trim();
+        return result.trim();
     }
 
     /**

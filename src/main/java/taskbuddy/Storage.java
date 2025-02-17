@@ -16,7 +16,6 @@ import taskbuddy.task.Todo;
  */
 public class Storage {
     private String filePath;
-    private final String indent = "   ";
 
     /**
      * Constructs a Storage object with the specified file path.
