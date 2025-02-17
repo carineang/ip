@@ -2,6 +2,7 @@ package taskbuddy;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import taskbuddy.task.Task;
 
@@ -104,19 +105,14 @@ public class TaskList {
 
     /**
      * Finds and returns all tasks whose descriptions contain the specified keyword.
-     * Searches through all task descriptions and returns those that contain the given keyword.
      *
      * @param keyword The keyword to search for in task descriptions.
      * @return A list of tasks that contain the specified keyword in their description.
      */
     public ArrayList<Task> findTasks(String keyword) {
-        ArrayList<Task> matchingTasks = new ArrayList<>();
-        for (Task task : tasks) {
-            if (task.getDescription().contains(keyword)) {
-                matchingTasks.add(task);
-            }
-        }
-        return matchingTasks;
+        return tasks.stream()
+                .filter(task -> task.getDescription().contains(keyword))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
@@ -126,13 +122,8 @@ public class TaskList {
      * @return A list of tasks that match the specified date.
      */
     public ArrayList<Task> findMatchingTaskDate(LocalDate targetDate) {
-        ArrayList<Task> matchingTasks = new ArrayList<>();
-        for (Task task : tasks) {
-            if (task.matchesDate(targetDate)) {
-                matchingTasks.add(task);
-            }
-        }
-        return matchingTasks;
+        return tasks.stream()
+                .filter(task -> task.matchesDate(targetDate))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
-
