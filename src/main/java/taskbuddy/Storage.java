@@ -109,7 +109,7 @@ public class Storage {
      * @return A To-do object.
      */
     private Todo parseTodo(String line) {
-        boolean isDone = line.contains("[1]");
+        boolean isDone = line.contains("[X]");
         String description = line.substring(7);
         Todo task = new Todo(description);
         if (isDone) {
@@ -125,7 +125,7 @@ public class Storage {
      * @return A Deadline object.
      */
     private Deadline parseDeadline(String line) {
-        boolean isDone = line.contains("[1]");
+        boolean isDone = line.contains("[X]");
         int byIndex = line.indexOf("(by:");
         if (byIndex == -1) {
             return null;
@@ -146,7 +146,7 @@ public class Storage {
      * @return An Event object.
      */
     private Event parseEvent(String line) {
-        boolean isDone = line.contains("[1]");
+        boolean isDone = line.contains("[X]");
         int fromIndex = line.indexOf("(from:");
         int toIndex = line.indexOf("to:");
         if (fromIndex == -1 || toIndex == -1) {
