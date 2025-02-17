@@ -19,8 +19,8 @@ Looking for a specific task or curious about your upcoming plans? Just ask, and 
 - [View a specific date `view`](#view)
 - [Exit the chatbot `bye`](#bye)
 
-## Add a todo task: `todo`
 <a id="todo"></a>
+## Add a todo task: `todo`
 Adding a todo task to the task list.
 
 Format: `todo [task description]`
@@ -32,8 +32,9 @@ Expected output:
 Got it. I've added this task:
   [T][] borrow book
 ```
-## Add a deadline task: `deadline`
+
 <a id="deadline"></a>
+## Add a deadline task: `deadline`
 Adding a deadline task to the task list.
 
 Format: `deadline [task description] /by [date] [time]`
@@ -46,8 +47,8 @@ Got it. I've added this task:
   [D][] return book (by: Feb 15 2025 6:00pm)
 ```
 
-## Add an event task: `event`
 <a id="event"></a>
+## Add an event task: `event`
 Adding an event task to the task list.
 
 Format: `event [task description] /from [date] [time] /to [date] [time]`
@@ -60,8 +61,8 @@ Got it. I've added this task:
   [E][] project meeting (from: Feb 18 2025 4:00pm to: Feb 18 2025 6:00pm)
 ```
 
-## List all tasks: `list`
 <a id="list"></a>
+## List all tasks: `list`
 Listing all tasks of task list.
 
 Format: `list`
@@ -75,8 +76,8 @@ Here are the tasks in your list:
   3. [E][] project meeting (from: Feb 18 2025 4:00pm to: Feb 18 2025 6:00pm)
 ```
 
-## Mark a task: `mark`
 <a id="mark"></a>
+## Mark a task: `mark`
 Marking a completed task.
 
 Format: `mark [task number]`
@@ -89,8 +90,8 @@ Nice! I've marked this task as done:
   [T][X] borrow book
 ```
 
-## Unmark a task: `unmark`
 <a id="unmark"></a>
+## Unmark a task: `unmark`
 Unmarking an incomplete task.
 
 Format: `unmark [task number]`
@@ -103,8 +104,8 @@ OK, I've marked this task as not done yet:
   [T][] borrow book
 ```
 
-## Delete a task: `delete`
 <a id="delete"></a>
+## Delete a task: `delete`
 Deleting a task.
 
 Format: `delete [task number]`
@@ -117,8 +118,8 @@ Noted. I've removed this task:
   [T][] borrow book
 ```
 
-## Find a task: `find`
 <a id="find"></a>
+## Find a task: `find`
 Finding a task using specific keywords.
 
 Format: `find [keyword]`
@@ -132,9 +133,8 @@ Here are the matching tasks in your list:
   1. [D][] return book (by: Feb 15 2025 6:00pm)
 ```
 
-
-## View a specific date: `view`
 <a id="view"></a>
+## View a specific date: `view`
 Viewing tasks for a specific date.
 
 Format: `view [date]`
@@ -147,8 +147,8 @@ Here are the tasks for this date:
   1. [D][] return book (by: Feb 15 2025 6:00pm)
 ```
 
-## Exit the chatbot: `bye`
 <a id="bye"></a>
+## Exit the chatbot: `bye`
 Exiting the chatbot.
 
 Format: `bye`
