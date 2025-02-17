@@ -29,6 +29,7 @@ public class ExitCommand extends Command {
         new Timer().schedule(new TimerTask() {
             public void run() {
                 Platform.exit();
+                System.exit(0);
             }
         }, 1000);
         return ui.printGoodbye();

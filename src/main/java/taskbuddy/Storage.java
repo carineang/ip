@@ -52,7 +52,7 @@ public class Storage {
             }
             System.out.println("Tasks have been saved to taskbuddy.txt.");
         } catch (IOException e) {
-            System.out.println("Error saving tasks to file. Please try again.");
+            System.out.println("No file available to save tasks.");
         }
     }
 
