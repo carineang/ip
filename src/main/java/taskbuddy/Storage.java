@@ -36,9 +36,14 @@ public class Storage {
      */
     public void saveTasks(TaskList taskList) {
         try {
-            writeTasksToFile(taskList.getTaskList());
+            Path dataDir = Paths.get(System.getProperty("user.dir"), "data");
+            if (!Files.exists(dataDir)) {
+                Files.createDirectory(dataDir);
+            }
+            Path path = dataDir.resolve("taskbuddy.txt");
+            writeTasksToFile(taskList.getTaskList(), path);
         } catch (IOException e) {
-            System.out.println("No data file available to save task.");
+            System.out.println("Error saving tasks: " + e.getMessage());
         }
     }
 
@@ -48,8 +53,11 @@ public class Storage {
      * @param tasks The list of tasks to be written.
      * @throws IOException If an error occurs while writing to the file.
      */
-    private void writeTasksToFile(List<Task> tasks) throws IOException {
-        Path path = Paths.get(filePath);
+    private void writeTasksToFile(List<Task> tasks, Path path) throws IOException {
+        if (!Files.exists(path)) {
+            Files.createFile(path);
+            System.out.println("File 'taskbuddy.txt' created in the 'data' directory.");
+        }
         List<String> taskStrings = tasks.stream()
                 .map(Task::toFileString)
                 .collect(Collectors.toList());
@@ -57,7 +65,7 @@ public class Storage {
             Files.write(path, taskStrings);
             System.out.println("Tasks have been saved to taskbuddy.txt");
         } catch (IOException e) {
-            throw new IOException("No data file available to save task.");
+            throw new IOException("Error saving tasks to file.");
         }
     }
 
@@ -68,9 +76,24 @@ public class Storage {
      * @throws IOException If an error occurs while reading from the file.
      */
     public ArrayList<Task> loadTasks() {
-        Path path = Paths.get(filePath);
+        Path dataDir = Paths.get(System.getProperty("user.dir"), "data");
+        if (!Files.exists(dataDir)) {
+            try {
+                Files.createDirectory(dataDir);
+            } catch (IOException e) {
+                System.out.println("Failed to create 'data' directory.");
+            }
+        }
+        Path path = dataDir.resolve("taskbuddy.txt");
         if (!Files.exists(path)) {
-            return new ArrayList<>();
+            try {
+                Files.createFile(path);
+                System.out.println("File 'taskbuddy.txt' created in the 'data' directory.");
+                return new ArrayList<>();
+            } catch (IOException e) {
+                System.out.println("Failed to create the file.");
+                return new ArrayList<>();
+            }
         }
         try {
             return Files.lines(path)
