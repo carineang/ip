@@ -15,8 +15,7 @@ public class ExitCommand extends Command {
 
     /**
      * Executes the exit command by saving the current task list to storage,
-     * displaying a goodbye message to the user, and scheduling the application
-     * to close after a short delay.
+     * displaying a goodbye message to the user, and scheduling the application to close.
      *
      * @param taskList The list of tasks to be saved before exiting.
      * @param ui The user interface for displaying messages.

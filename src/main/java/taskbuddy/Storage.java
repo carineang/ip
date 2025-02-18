@@ -1,10 +1,12 @@
 package taskbuddy;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import taskbuddy.task.Deadline;
 import taskbuddy.task.Event;
@@ -33,8 +35,11 @@ public class Storage {
      * @param taskList The list of tasks to be saved.
      */
     public void saveTasks(TaskList taskList) {
-        ArrayList<Task> tasks = taskList.getTaskList();
-        writeTasksToFile(tasks);
+        try {
+            writeTasksToFile(taskList.getTaskList());
+        } catch (IOException e) {
+            System.out.println("Failed to save tasks: " + e.getMessage());
+        }
     }
 
     /**
@@ -43,16 +48,16 @@ public class Storage {
      * @param tasks The list of tasks to be written.
      * @throws IOException If an error occurs while writing to the file.
      */
-    private void writeTasksToFile(ArrayList<Task> tasks) {
-        File file = new File(filePath);
-        try (FileWriter writer = new FileWriter(file)) {
-            for (Task task : tasks) {
-                assert task != null : "Task should not be null.";
-                writer.write(task.toFileString() + "\n");
-            }
-            System.out.println("Tasks have been saved to taskbuddy.txt.");
+    private void writeTasksToFile(List<Task> tasks) throws IOException {
+        Path path = Paths.get(filePath);
+        List<String> taskStrings = tasks.stream()
+                .map(Task::toFileString)
+                .collect(Collectors.toList());
+        try {
+            Files.write(path, taskStrings);
+            System.out.println("Tasks have been saved to taskbuddy.txt");
         } catch (IOException e) {
-            System.out.println("No file available to save tasks.");
+            throw new IOException("Error writing tasks to file.");
         }
     }
 
@@ -63,25 +68,21 @@ public class Storage {
      * @throws IOException If an error occurs while reading from the file.
      */
     public ArrayList<Task> loadTasks() {
-        ArrayList<Task> tasks = new ArrayList<>();
-        File file = new File(filePath);
-        if (!file.exists()) {
-            return tasks;
+        Path path = Paths.get(filePath);
+        if (!Files.exists(path)) {
+            System.out.println("No existing file found, returning empty task list.");
+            return new ArrayList<>();
         }
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                assert line != null && !line.trim().isEmpty() : "Invalid line read from file.";
-                Task task = parseTaskFromString(line);
-                if (task != null) {
-                    tasks.add(task);
-                }
-            }
-            System.out.println("Loaded " + tasks.size() + " tasks from taskbuddy.txt.");
+        try {
+            return Files.lines(path)
+                    .filter(line -> !line.trim().isEmpty())
+                    .map(this::parseTaskFromString)
+                    .filter(task -> task != null)
+                    .collect(Collectors.toCollection(ArrayList::new));
         } catch (IOException e) {
             System.out.println("Error loading tasks. Starting with an empty list.");
+            return new ArrayList<>();
         }
-        return tasks;
     }
 
     /**
