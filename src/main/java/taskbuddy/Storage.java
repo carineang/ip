@@ -38,7 +38,7 @@ public class Storage {
         try {
             writeTasksToFile(taskList.getTaskList());
         } catch (IOException e) {
-            System.out.println("Failed to save tasks: " + e.getMessage());
+            System.out.println("No data file available to save task.");
         }
     }
 
@@ -57,7 +57,7 @@ public class Storage {
             Files.write(path, taskStrings);
             System.out.println("Tasks have been saved to taskbuddy.txt");
         } catch (IOException e) {
-            throw new IOException("Error writing tasks to file.");
+            throw new IOException("No data file available to save task.");
         }
     }
 
@@ -70,7 +70,6 @@ public class Storage {
     public ArrayList<Task> loadTasks() {
         Path path = Paths.get(filePath);
         if (!Files.exists(path)) {
-            System.out.println("No existing file found, returning empty task list.");
             return new ArrayList<>();
         }
         try {
@@ -80,7 +79,6 @@ public class Storage {
                     .filter(task -> task != null)
                     .collect(Collectors.toCollection(ArrayList::new));
         } catch (IOException e) {
-            System.out.println("Error loading tasks. Starting with an empty list.");
             return new ArrayList<>();
         }
     }
