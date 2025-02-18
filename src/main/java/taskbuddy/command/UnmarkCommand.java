@@ -13,7 +13,7 @@ public class UnmarkCommand extends Command {
     private int taskIndex;
 
     /**
-     * Constructs an UnmarkCommand with the specified task and its index in the task list.
+     * An UnmarkCommand with the specified task and its index in the task list.
      *
      * @param task The task to be unmarked as completed.
      * @param taskIndex The index of the task in the task list.
@@ -24,13 +24,12 @@ public class UnmarkCommand extends Command {
     }
 
     /**
-     * Executes the unmark command by unmarking the specified task as incomplete,
-     * printing a confirmation message to the user, and saving the updated task list to storage.
+     * Executes the unmark command by unmarking the specified task.
      *
-     * @param taskList The list of tasks that contains the task to be unmarked as incomplete.
-     * @param ui The user interface used to display the confirmation message to the user.
-     * @param storage The storage system used to save the updated task list after the task is unmarked.
-     * @return A string containing the confirmation message indicating the task has been unmarked as incomplete.
+     * @param taskList The list of tasks.
+     * @param ui The user interface.
+     * @param storage The storage system.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

@@ -16,7 +16,7 @@ public class ViewCommand extends Command {
     private String date;
 
     /**
-     * Constructs a ViewCommand object with a specified date.
+     * A ViewCommand object with a specified date.
      *
      * @param date A string representing the date to find tasks.
      */
@@ -27,10 +27,10 @@ public class ViewCommand extends Command {
     /**
      * Executes the view command to find tasks that match the specified date.
      *
-     * @param taskList The list of tasks to search for matching tasks.
-     * @param ui The user interface used to print the result.
-     * @param storage The storage system to view tasks.
-     * @return A string that represents the matching tasks for the specified date.
+     * @param taskList The list of tasks.
+     * @param ui The user interface.
+     * @param storage The storage system.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

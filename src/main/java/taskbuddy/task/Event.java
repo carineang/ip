@@ -12,7 +12,7 @@ public class Event extends Task {
     protected LocalDateTime to;
 
     /**
-     * Constructs an Event object with a description and start and end times.
+     * An Event object with a description and start and end times.
      *
      * @param description A description of the event.
      * @param from The start time of the event.

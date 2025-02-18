@@ -14,7 +14,7 @@ public class FindCommand extends Command {
     private String keyword;
 
     /**
-     * Constructs a FindCommand with the specified keyword.
+     * A FindCommand with the specified keyword.
      *
      * @param keyword The keyword to search within the tasks.
      */
@@ -23,13 +23,12 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Executes the find command by searching for tasks that contain the specified keyword
-     * in their description. The results are then displayed to the user.
+     * Executes the find command by searching for tasks that contain the specified keyword.
      *
-     * @param taskList The list of tasks to search through.
-     * @param ui The user interface used to display the search results to the user.
-     * @param storage The storage system, though not directly used in this command.
-     * @return A message containing the list of tasks that match the search keyword.
+     * @param taskList The list of tasks.
+     * @param ui The user interface.
+     * @param storage The storage system.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

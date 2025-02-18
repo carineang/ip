@@ -13,14 +13,14 @@ public class TaskList {
     private ArrayList<Task> tasks;
 
     /**
-     * Constructs an empty TaskList.
+     * An empty TaskList.
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
     /**
-     * Constructs a TaskList with the given list of tasks.
+     * A TaskList with the given list of tasks.
      *
      * @param tasks The list of tasks to initialize the TaskList with.
      */

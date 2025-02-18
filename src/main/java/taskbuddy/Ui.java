@@ -13,7 +13,7 @@ public class Ui {
     private Scanner sc;
 
     /**
-     * Constructs a new Ui instance.
+     * A new Ui instance.
      */
     public Ui() {
         this.sc = new Scanner(System.in);

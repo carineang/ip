@@ -12,7 +12,7 @@ public class AddCommand extends Command {
     private Task task;
 
     /**
-     * Constructs an AddCommand to add the specified task.
+     * An AddCommand to add the specified task.
      *
      * @param task The task to be added to the task list.
      */
@@ -21,13 +21,12 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Executes the command by adding the task to the task list, displaying a confirmation
-     * message to the user, and saving the updated task list to storage.
+     * Executes the command by adding the task to the task list.
      *
-     * @param taskList The task list to which the task is added.
-     * @param ui The user interface for displaying messages.
-     * @param storage The storage system for saving the updated task list.
-     * @return A confirmation message indicating the task has been added.
+     * @param taskList The task list.
+     * @param ui The user interface.
+     * @param storage The storage system.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

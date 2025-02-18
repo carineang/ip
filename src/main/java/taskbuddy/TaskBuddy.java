@@ -12,11 +12,9 @@ public class TaskBuddy {
     private Ui ui;
 
     /**
-     * Constructs a TaskBuddy object with the specified file path for storing task data.
-     * Initializes the User Interface, Storage, and loads existing tasks from the file
-     * into the TaskList.
+     * A TaskBuddy object with the specified file path for storing task data.
      *
-     * @param filePath The path of the file where tasks will be saved and loaded from.
+     * @param filePath The path of the file.
      */
     public TaskBuddy(String filePath) {
         ui = new Ui();
@@ -27,8 +25,8 @@ public class TaskBuddy {
     /**
      * Processes user input by parsing the command and executing the corresponding action.
      *
-     * @param input The user input as a string, which represents the command the user wishes to execute.
-     * @return A response message as a string, based on the execution of the command.
+     * @param input The user input as a string.
+     * @return A confirmation message.
      */
     public String getResponse(String input) {
         try {

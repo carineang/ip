@@ -13,7 +13,7 @@ public class DeleteCommand extends Command {
     private int taskIndex;
 
     /**
-     * Constructs a DeleteCommand to delete the specified task at the given index.
+     * A DeleteCommand to delete the specified task at the given index.
      *
      * @param task The task to be deleted.
      * @param taskIndex The index of the task to be deleted in the task list.
@@ -24,13 +24,12 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Executes the command by removing the task from the task list, displaying
-     * a confirmation message to the user, and saving the updated task list to storage.
+     * Executes the command by removing the task from the task list.
      *
-     * @param taskList The task list from which the task is removed.
-     * @param ui The user interface for displaying messages.
-     * @param storage The storage system for saving the updated task list.
-     * @return A confirmation message indicating the task has been deleted.
+     * @param taskList The task list.
+     * @param ui The user interface.
+     * @param storage The storage system.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

@@ -11,12 +11,11 @@ public class ListCommand extends Command {
 
     /**
      * Executes the list command by printing all tasks in the current task list.
-     * This method fetches the current task list and delegates the task of displaying it to the user interface.
      *
-     * @param taskList The list of tasks to be displayed to the user.
-     * @param ui The user interface that handles displaying the task list.
+     * @param taskList The list of tasks.
+     * @param ui The user interface.
      * @param storage The storage system.
-     * @return A string containing the formatted task list to be displayed to the user.
+     * @return A confirmation message.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

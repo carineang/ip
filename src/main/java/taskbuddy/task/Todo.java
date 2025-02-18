@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Todo extends Task {
 
     /**
-     * Constructs a To-do object with a description.
+     * A To-do object with a description.
      *
      * @param description A description of the to-do task.
      */

@@ -29,7 +29,7 @@ public class Parser {
     /**
      * Parses the user input into a Command object that can be executed.
      *
-     * @param input The full user input string containing the command and its parameters.
+     * @param input The full user input string.
      * @param taskList The current list of tasks.
      * @return A Command object representing the action to be executed.
      * @throws TaskBuddyException if the input is invalid or improperly formatted.
