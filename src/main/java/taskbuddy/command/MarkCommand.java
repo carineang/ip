@@ -49,4 +49,13 @@ public class MarkCommand extends Command {
     public boolean isExit() {
         return false;
     }
+
+    /**
+     * Returns the task for this MarkCommand.
+     *
+     * @return Task.
+     */
+    public Task getTask() {
+        return task;
+    }
 }
